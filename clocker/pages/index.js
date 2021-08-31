@@ -2,9 +2,9 @@ import { Logo } from './../components/Logo'
 
 
 export default function Home() {
-  return(
+  return( // quando adiciono <Logo /> na div a baixo, o codigo entra em colapso // verificar porque depois 
     <div>
-      Cloker io 
+      Clocker io 
     </div>
   )
 }
