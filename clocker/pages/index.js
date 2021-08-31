@@ -24,15 +24,34 @@ export default function Home() {
         <Text>Crie sua agenda compartilhada</Text>
       </Box>
 
-      <FormControl id="email" isRequired>
-        <FormLabel>Email</FormLabel>
-        <Input type="email" />         
-      </FormControl>
+      <Box>
+        <FormControl id="email" p={4} isRequired>
+          <FormLabel>Email</FormLabel>
+          <Input type="email" />
+        </FormControl>
+      </Box>
 
-      <FormControl id="password" isRequired>
-        <FormLabel>Senha</FormLabel>
-        <Input type="password" />         
-      </FormControl>
+
+      <Box>
+        <FormControl id="password" p={4} isRequired>
+          <FormLabel>Senha</FormLabel>
+          <Input type="password" />
+        </FormControl>
+      </Box>
+      
+      <Box display="flex" flexDirection="row" alignItems="center">
+        <Text>clocker.work/</Text>
+        <FormControl id="username" p={4} isRequired>
+          <Input type="username" />
+          </FormControl>
+        </Box>
+      
+
+      <Box p={4} >
+        <Button width="100%">Entrar</Button>
+      </Box>
+
+
 
 
 
@@ -41,3 +60,4 @@ export default function Home() {
   )
 }
 // consegui uma solução mais sujou o codigo verificar depois //
+// Box username torto, verificar na documentação do chakra //
