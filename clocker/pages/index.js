@@ -13,6 +13,8 @@ import {
   FormControl,
   FormLabel,
   FormHelperText,
+  InputLeftAddon,
+  InputGroup
 } from '@chakra-ui/react'
 
 import { Logo } from './../components/Logo'
@@ -26,21 +28,28 @@ const validationSchema = yup.object().shape({
 })
 
 export default function Home() {
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit}= useFormik({
-    onSubmit: () => { },
-    validationSchema,
-    initialValues: {
-      email: '',
-      usermane: '',
-      password: '',
+  const { 
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting } = useFormik({ onSubmit: ( value, form) => { 
+      console.log(values)
+    }, validationSchema,
+      initialValues: {
+        email: '',
+        usermane: '',
+        password: '',
 
-    }
-  })
+      }
+    })
   return ( // quando adiciono <Logo /> na div a baixo o codigo entra em colapso // 
 
     //padding no chakra é por escala por isso  p={4} verificar na documentação//
     // alias verificar tudo na verificação do chakra sobre a pagina de singup //
-    
+
     <Container p={4} centerContent>
       <Logo />
       <Box p={4} mt={8}>
@@ -50,7 +59,7 @@ export default function Home() {
       <Box>
         <FormControl id="email" p={4} isRequired>
           <FormLabel>Email</FormLabel>
-          <Input type="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
+          <Input size="lg" type="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
           {touched.email && <FormHelperText textColor="#e74c3c">{errors.email}</FormHelperText>}
         </FormControl>
       </Box>
@@ -59,22 +68,27 @@ export default function Home() {
       <Box>
         <FormControl id="password" p={4} isRequired>
           <FormLabel>Senha</FormLabel>
-          <Input type="password" value={values.password} onChange={handleChange} onBlur={handleBlur} />
+          <Input size="lg" type="password" value={values.password} onChange={handleChange} onBlur={handleBlur} />
           {touched.password && <FormHelperText textColor="#e74c3c">{errors.password}</FormHelperText>}
         </FormControl>
       </Box>
 
-      <Box display="flex" flexDirection="row" alignItems="center">
-        <Text>clocker.work/</Text>
-        <FormControl id="username" p={4} isRequired>
+
+
+
+
+      <FormControl id="username" p={4} isRequired>
+        <InputGroup size="lg">
+          <InputLeftAddon children="clocker.work/" />
           <Input type="username" value={values.username} onChange={handleChange} onBlur={handleBlur} />
-          {touched.username && <FormHelperText textColor="#e74c3c">{errors.username}</FormHelperText>}
-        </FormControl>
-      </Box>
+        </InputGroup>
+        {touched.username && <FormHelperText textColor="#e74c3c">{errors.username}</FormHelperText>}
+      </FormControl>
+
 
 
       <Box p={4} >
-        <Button width="100%" onClick={handleSubmit}>Entrar</Button>
+        <Button colorScheme="blue" width="100%"  onClick={handleSubmit}isLoading={isSubmitting}>Entrar</Button>
       </Box>
 
 
