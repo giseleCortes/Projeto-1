@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-config
-/.next/
+
 
 # testing
 /coverage
@@ -34,7 +33,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-<<<<<<< HEAD
-  
-=======
->>>>>>> parent of 3ca9c8e (adicionando configurações do firebase)
