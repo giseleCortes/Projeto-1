@@ -6,7 +6,6 @@
 .pnp.js
 config
 /.next/
-firebase
 
 # testing
 /coverage
