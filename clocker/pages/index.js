@@ -1,7 +1,4 @@
-
-
 import { useFormik } from 'formik'
-
 import * as yup from 'yup'
 
 import {
@@ -14,18 +11,19 @@ import {
   FormLabel,
   FormHelperText,
   InputLeftAddon,
-  InputGroup
-} from '@chakra-ui/react'
+  InputGroup }
+
+from '@chakra-ui/react'
 
 import { Logo } from './../components/Logo'
+// import firebase from './../config/firebase'
 
+// quando eu importo o firebase da erro 
 
 const validationSchema = yup.object().shape({
-  email: yup.string().email('E-mail inválido').required('Preenchimento Obrigatório'),
-  password: yup.string().required('Preenchimento Obrigatório'),
-  username: yup.string().required('Preenchimento Obrigatório'),
-  // o correto seria buscar no banco de dados se o nome do usuário ja existe verificar depois // 
-
+  email: yup.string().email('E-mail inválido').required('Preenchimento obrigatório'),
+  password: yup.string().required('Preenchimento obrigatório'),
+  username: yup.string().required('Preenchimento obrigatório'),
 })
 
 export default function Home() {
@@ -36,24 +34,20 @@ export default function Home() {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting } = useFormik({
-      onSubmit: (value, form) => {
-        console.log(values)
-      },
+    isSubmitting }
+    = useFormik({
+      onSubmit: (values, form) => {
 
+      },
       validationSchema,
       initialValues: {
         email: '',
-        usermane: '',
+        username: '',
         password: '',
-
       }
     })
-  return ( // quando adiciono <Logo /> na div a baixo o codigo entra em colapso // 
 
-    //padding no chakra é por escala por isso  p={4} verificar na documentação//
-    // alias verificar tudo na verificação do chakra sobre a pagina de singup //
-
+  return (
     <Container p={4} centerContent>
       <Logo />
       <Box p={4} mt={8}>
@@ -66,10 +60,7 @@ export default function Home() {
           <Input size="lg" type="email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
           {touched.email && <FormHelperText textColor="#e74c3c">{errors.email}</FormHelperText>}
         </FormControl>
-      </Box>
 
-
-      <Box>
         <FormControl id="password" p={4} isRequired>
           <FormLabel>Senha</FormLabel>
           <Input size="lg" type="password" value={values.password} onChange={handleChange} onBlur={handleBlur} />
@@ -77,19 +68,13 @@ export default function Home() {
         </FormControl>
       </Box>
 
-
-
-
-
       <FormControl id="username" p={4} isRequired>
         <InputGroup size="lg">
-          <InputLeftAddon children="clocker.work" />
+          <InputLeftAddon children='clocker.work/' />
           <Input type="username" value={values.username} onChange={handleChange} onBlur={handleBlur} />
         </InputGroup>
         {touched.username && <FormHelperText textColor="#e74c3c">{errors.username}</FormHelperText>}
       </FormControl>
-
-
 
       <Box p={4} >
         <Button colorScheme="blue" width="100%" onClick={handleSubmit} isLoading={isSubmitting}>Entrar</Button>
@@ -103,5 +88,15 @@ export default function Home() {
 
   )
 }
-// consegui uma solução mais sujou o codigo verificar depois //
-// Box username torto, verificar na documentação do chakra //
+
+
+
+
+// Box username torto, verificar na documentação do chakra 
+
+// quando adiciono <Logo /> na div a baixo o codigo entra em colapso 
+//consegui uma solução mais sujou o codigo verificar depois //
+
+
+//padding no chakra é por escala por isso  p={4} verificar na documentação
+// alias verificar tudo na verificação do chakra sobre a pagina de singup 
