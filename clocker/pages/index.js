@@ -16,7 +16,8 @@ import {
 from '@chakra-ui/react'
 
 import { Logo } from './../components/Logo'
-// import firebase from './../config/firebase'
+//import firebase from './../config/firebase'
+
 
 // quando eu importo o firebase da erro 
 
@@ -36,8 +37,12 @@ export default function Home() {
     handleSubmit,
     isSubmitting }
     = useFormik({
-      onSubmit: (values, form) => {
-
+      onSubmit: async (values, form) => {
+        try{const user = await firebase.auth().creatUserWithInEmailAndPassword(values.email, values.password)
+        }catch (error) {
+          console.log('ERROR:', error)
+        }
+       
       },
       validationSchema,
       initialValues: {
